@@ -31,10 +31,10 @@ class Server:
         assert type(page_size) == int
         assert page > 0
         assert page_size > 0
-        idx = index_range(page, page_size)
+        csv_size = len(self.dataset())
+        start, end = index_range(page, page_size)
+        end = min(end, csv_size)
         try:
-            for i in range(page_size):
-                new.append(self.dataset()[idx[0]+i])
+            self.dataset()[idx[0]:end]
         except IndexError:
             return []
-        return new
