@@ -37,7 +37,8 @@ class Server:
         assert isinstance(page_size, int) and page > 0
 
         start, end = index_range(page, page_size)
-        try:
-            return self.dataset()[start:end]
-        except IndexError:
+
+        mylist = self.dataset()
+        if mylist is None:
             return []
+        return mylist[start:end]
