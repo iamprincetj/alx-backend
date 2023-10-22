@@ -70,6 +70,3 @@ class Server:
         }
 
         return hyper
-
-
-server = Server()
