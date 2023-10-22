@@ -32,13 +32,15 @@ class Server:
         return self.__dataset
 
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
-        '''A method that takes two integer arguments '''
+        '''
+            Returns a page of data.
+        '''
         assert isinstance(page, int) and page > 0
-        assert isinstance(page_size, int) and page > 0
+        assert isinstance(page_size, int) and page_size > 0
+        self.dataset()
 
-        start, end = index_range(page, page_size)
-
-        mylist = self.dataset()
-        if mylist is None:
+        if self.dataset() is None:
             return []
-        return mylist[start:end]
+
+        indexRange = index_range(page, page_size)
+        return self.dataset()[indexRange[0]:indexRange[1]]
