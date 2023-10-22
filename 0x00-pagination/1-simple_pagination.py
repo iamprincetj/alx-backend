@@ -1,15 +1,19 @@
 #!/usr/bin/env python3
+'''
+    Simple pagination.
+'''
 import csv
 import math
 from typing import List
 
 
-def index_range(page: int, page_size: int) -> tuple:
-    '''A function that return a tuple of size
-       two containing a start index and an end index'''
-    end_idx = page * page_size
-    start_idx = end_idx - page_size
-    return start_idx, end_idx
+def index_range(page, page_size):
+    '''
+        Returns the range of indexes for a given page.
+    '''
+    start = (page - 1) * page_size
+    end = page * page_size
+    return start, end
 
 
 class Server:
@@ -20,7 +24,7 @@ class Server:
     def __init__(self):
         self.__dataset = None
 
-    def dataset(self) -> List[List]:
+    def dataset(self) -> List[List]:  # sourcery skip: identity-comprehension
         """Cached dataset
         """
         if self.__dataset is None:
