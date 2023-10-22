@@ -35,6 +35,6 @@ class Server:
         start, end = index_range(page, page_size)
         end = min(end, csv_size)
         try:
-            self.dataset()[idx[0]:end]
+            return self.dataset()[idx[0]:end]
         except IndexError:
             return []
